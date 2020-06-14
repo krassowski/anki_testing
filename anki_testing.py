@@ -30,24 +30,26 @@ def temporary_user(dir_name, name="__Temporary Test User__", lang="en_US"):
 
     pm.setupMeta()
 
-    if name in pm.profiles():
-        warn(f"Temporary user named {name} already exists")
-    else:
-        pm.create(name)
+    # create profile no matter what (since we are starting in a unique temp directory)
+    pm.create(name)
+
+    # this needs to be called explicitly
+    pm.setDefaultLang()
 
     pm.name = name
 
     yield name
 
+    # cleanup
     pm.remove(name)
     ProfileManager.setDefaultLang = original
 
 
 @contextmanager
 def temporary_dir(name):
-    path = os.path.join(tempfile.gettempdir(), name)
-    yield path
-    shutil.rmtree(path)
+    # create a true unique temporary directory at every startup
+    tempdir = tempfile.TemporaryDirectory(suffix='anki')
+    yield tempdir.name
 
 
 @contextmanager
