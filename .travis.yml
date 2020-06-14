@@ -9,4 +9,4 @@ install:
   - source setup.sh
 
 script:
-  - pytest
+  - python -m pytest tests
