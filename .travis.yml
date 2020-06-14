@@ -7,9 +7,8 @@ python:
   - 3.7
 
 install: 
-  - git clone https://github.com/krassowski/anki_testing
   - python3 -m pip install pytest
-  - source anki_testing/setup.sh 
+  - source setup.sh 
 
 script:
   - bash run_tests.sh
