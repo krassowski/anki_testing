@@ -7,7 +7,8 @@ python:
 
 install: 
   - python3 -m pip install pytest
+  - python3 -m pip install PyQt5
   - source setup.sh 
 
 script:
-  - bash anki_testing/run_tests.sh
+  - python3 -m pytest tests
