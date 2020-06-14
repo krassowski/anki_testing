@@ -1,4 +1,4 @@
 sudo apt-get update
-sudo apt-get install portaudio19-dev xvfb
+sudo apt-get install portaudio19-dev xvfb libqt5x11extras5
 start-stop-daemon --start --pidfile ~/xvfb.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -screen 0 1024x768x24 -ac +extension GLX +render -noreset
 export DISPLAY=:99
