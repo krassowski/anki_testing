@@ -6,9 +6,8 @@ python:
   - 3.7
 
 install: 
-  - python3 -m pip install pytest
-  - python3 -m pip install PyQt5
-  - source setup.sh 
+  - pip install anki aqt # install both Anki modules from PyPI
+  - source setup.sh
 
 script:
-  - python3 -m pytest tests
+  - pytest
