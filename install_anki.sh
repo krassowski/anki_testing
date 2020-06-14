@@ -9,6 +9,7 @@ then
     echo "$anki_dir not detected, cloning from master"
     git clone https://github.com/ankitects/anki anki_root
     cd anki_root
+    export SKIP_ANKI_RSPY=1 # don't install ankirspy, it can't be found on pip. not sure what this module is fore.    
     echo "installing anki module (pylib) from anki local checkout"
     cd pylib
     python3 setup.py install
@@ -18,4 +19,5 @@ then
     cd qt
     python3 setup.py install
     echo "done installing aqt module"
+    cd ..
 fi
