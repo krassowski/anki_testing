@@ -24,7 +24,7 @@ def temporary_user(dir_name, name="__Temporary Test User__", lang="en_US"):
     def set_default_lang(profileManager):
         profileManager.setLang(lang)
 
-    ProfileManager._setDefaultLang = set_default_lang
+    ProfileManager.setDefaultLang = set_default_lang
 
     pm = ProfileManager(base=dir_name)
 
@@ -40,7 +40,7 @@ def temporary_user(dir_name, name="__Temporary Test User__", lang="en_US"):
     yield name
 
     pm.remove(name)
-    ProfileManager._setDefaultLang = original
+    ProfileManager.setDefaultLang = original
 
 
 @contextmanager
