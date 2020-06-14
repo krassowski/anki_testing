@@ -19,7 +19,7 @@ from aqt.profiles import ProfileManager
 def temporary_user(dir_name, name="__Temporary Test User__", lang="en_US"):
 
     # prevent popping up language selection dialog
-    original = ProfileManager._setDefaultLang
+    original = ProfileManager.setDefaultLang
 
     def set_default_lang(profileManager):
         profileManager.setLang(lang)
