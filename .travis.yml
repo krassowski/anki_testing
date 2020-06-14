@@ -6,7 +6,7 @@ python:
   - 3.7
 
 install: 
-  - pip install --use-wheel PyQt5 # install pyqt5 explicitely from wheel
+  - pip install https://files.pythonhosted.org/packages/45/32/341fa5b9fc010ff4e520efe7cdbad24e61890230cf4eb12c871f512ee456/PyQt5-5.15.0-5.15.0-cp35.cp36.cp37.cp38-abi3-manylinux2014_x86_64.whl # install pyqt5 explicitely from wheel
   - pip install anki aqt # install both Anki modules from PyPI
   - source setup.sh
 
