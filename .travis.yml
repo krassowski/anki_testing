@@ -10,4 +10,7 @@ install:
   - source setup.sh 
 
 script:
+  - bash echo currentdir
+  - bash pwd
+  - bash ls
   - bash run_tests.sh
