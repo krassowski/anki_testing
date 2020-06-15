@@ -12,6 +12,7 @@ sys.path.insert(0, 'anki_root')
 
 import aqt
 from aqt import _run
+from aqt import AnkiApp
 from aqt.profiles import ProfileManager
 
 
@@ -55,10 +56,18 @@ def temporary_dir(name):
 @contextmanager
 def anki_running():
 
+    # don't use the second instance mechanism, start a new instance every time
+    def mock_secondInstance(ankiApp):
+        return False
+
+    AnkiApp.secondInstance = mock_secondInstance
+
     # we need a new user for the test
     with temporary_dir("anki_temp_base") as dir_name:
         with temporary_user(dir_name) as user_name:
-            app = _run(argv=["anki", "-p", user_name, "-b", dir_name], exec=False)
+            argv=["anki", "-p", user_name, "-b", dir_name]
+            print(f'running anki with argv={argv}')
+            app = _run(argv=argv, exec=False)
             yield app
 
     # clean up what was spoiled
